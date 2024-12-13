@@ -21,7 +21,7 @@ class GerenciadorTarefa:
             with open('Tarefas.txt', 'r', encoding='utf-8') as arquivo:
                 for linha in arquivo:
                     if linha.startswith('Tarefa'):
-                        nome_tarefa = linha.split(':', 1)[1].split()
+                        nome_tarefa = linha.split(':', 1)[1].strip()
                         if nome_tarefa not in [tarefa.nome for tarefa in self.lista_tarefas]:
                             nova_tarefa = Tarefa(nome_tarefa)
                             self.lista_tarefas.append(nova_tarefa)
@@ -45,7 +45,7 @@ class GerenciadorTarefa:
                     print(f'Tarefa "{nome_tarefa}" adicionada com sucesso. ')
                     
                     with open('Tarefas.txt', 'a', encoding='utf-8') as arquivo:
-                        arquivo.write(f'Tarefa: {nome_tarefa}.\n')
+                        arquivo.write(f'Tarefa: {nome_tarefa} - {descricao} -\n')
                 else:
                      print('Tarefa já está na lista de tarefas. ')
                 finalizar = input('\033[32mADICIONAR\033[0m: Você deseja adicionar outra tarefa? [Sim/Não]: ').strip().lower()
@@ -91,7 +91,7 @@ class GerenciadorTarefa:
             for i, tarefa in enumerate(self.lista_tarefas, start=1):
                 self.status = 'Concluída' if tarefa.concluida else 'Não concluída'
                 descricao = f'- {tarefa.descricao}' if tarefa.descricao else ''
-                print(f'{i} - {tarefa.nome} {descricao}. Status: {self.status}')
+                print(f'{i} - {tarefa.nome} {descricao} Status: {self.status}')
         self.linhas()
 
 
