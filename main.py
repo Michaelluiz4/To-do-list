@@ -1,4 +1,4 @@
-from gerenciador_tarefas import Tarefa, GerenciadorTarefa
+from gerenciador_tarefas import GerenciadorTarefa
 
 if __name__ == '__main__':
     gerenciador = GerenciadorTarefa()
